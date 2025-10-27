@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cofitearia.milktea.controllers.RegisterController" fx:id="rootStackPane">
+   <children>
+      <!-- Main Content -->
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0">
+   <center>
+             <VBox alignment="CENTER" spacing="20.0" styleClass="main-container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <!-- Application Title -->
+            <Label alignment="CENTER" text="Cofitearia Milktea" textFill="#2196F3">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            
+            <!-- Subtitle -->
+            <Label alignment="CENTER" text="User Registration" textFill="#666666">
+               <font>
+                  <Font name="System" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+            </Label>
+            
+            <!-- Registration Form -->
+                         <VBox spacing="10.0" styleClass="login-form" maxWidth="700.0" minWidth="400.0">
+               <padding>
+                  <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+               </padding>
+               <children>
+                  <!-- Two-Column Layout for Basic Info -->
+                  <GridPane hgap="15.0" vgap="10.0" maxWidth="1.7976931348623157E308">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                     </columnConstraints>
+                     
+                     <children>
+                        <!-- First Name -->
+                        <Label text="First Name *" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="firstNameField" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="John" styleClass="form-field" />
+                        
+                        <!-- Last Name -->
+                        <Label text="Last Name *" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Doe" styleClass="form-field" />
+                        
+                        <!-- Username -->
+                        <Label text="Username *" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="usernameField" GridPane.columnIndex="0" GridPane.rowIndex="3" promptText="johndoe" styleClass="form-field" />
+                        
+                        <!-- Email -->
+                        <Label text="Email *" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="john@example.com" styleClass="form-field" />
+                     </children>
+                  </GridPane>
+                  
+                  <!-- Password Fields -->
+                  <GridPane hgap="15.0" vgap="10.0" maxWidth="1.7976931348623157E308">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+                     </columnConstraints>
+                     
+                     <children>
+                        <!-- Password -->
+                        <Label text="Password *" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" GridPane.columnIndex="0" GridPane.rowIndex="1" promptText="••••••••" styleClass="form-field" />
+                        
+                        <!-- Confirm Password -->
+                        <Label text="Confirm Password *" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="••••••••" styleClass="form-field" />
+                     </children>
+                  </GridPane>
+                  
+                  <!-- Role Selection -->
+                  <Label text="Role *" textFill="#333333">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="roleComboBox" promptText="Select your role" styleClass="form-field" />
+                  
+                  <!-- Status Label -->
+                  <Label fx:id="statusLabel" textFill="#F44336" visible="false" styleClass="error-label" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="System" size="12.0" />
+                     </font>
+                  </Label>
+                  
+                  <!-- Register Button -->
+                  <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" styleClass="btn-register" text="Create Account">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Click to create your account" />
+                     </tooltip>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            
+            <!-- Back to Login Link -->
+            <Hyperlink fx:id="backToLoginLink" text="Already have an account? Login here" textFill="#2196F3">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Return to login screen" />
+               </tooltip>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Hyperlink>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                   </padding>
+       </VBox>
+    </center>
+       </BorderPane>
+   </children>
+ </StackPane>

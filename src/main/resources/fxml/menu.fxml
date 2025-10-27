@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cofitearia.milktea.controllers.MenuController" style="-fx-background-color: #ffffff;">
+   <!-- Navigation Bar -->
+   <fx:include source="navigation_bar.fxml" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   
+   <!-- Category Menu -->
+   <VBox fx:id="categoryMenu" alignment="TOP_CENTER" prefWidth="200.0" spacing="10.0" style="-fx-background-color: #f5f5f5; -fx-padding: 20px;" AnchorPane.topAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+      <children>
+         <!-- Category Header -->
+         <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333; -fx-padding: 0 0 10px 0;" text="Categories" />
+         
+         <!-- Category List -->
+         <VBox alignment="TOP_LEFT" spacing="5.0">
+            <children>
+               <Button fx:id="bestSellerBtn" onAction="#showCategory" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-padding: 10px 15px; -fx-pref-width: 180px; -fx-alignment: center-left;" text="Best Seller" />
+               <Button fx:id="mixedBtn" onAction="#showCategory" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-padding: 10px 15px; -fx-pref-width: 180px; -fx-alignment: center-left;" text="Mixed" />
+               <Button fx:id="milkteaBtn" onAction="#showCategory" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-padding: 10px 15px; -fx-pref-width: 180px; -fx-alignment: center-left;" text="Milktea" />
+               <Button fx:id="topPicksBtn" onAction="#showCategory" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-padding: 10px 15px; -fx-pref-width: 180px; -fx-alignment: center-left;" text="Top Picks" />
+               <Button fx:id="coffeeBtn" onAction="#showCategory" style="-fx-background-color: transparent; -fx-text-fill: #666666; -fx-font-size: 14px; -fx-background-radius: 5px; -fx-padding: 10px 15px; -fx-pref-width: 180px; -fx-alignment: center-left;" text="Coffee" />
+            </children>
+         </VBox>
+      </children>
+   </VBox>
+   
+   <!-- Product Grid with Cart Button -->
+   <StackPane AnchorPane.topAnchor="70.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+      <ScrollPane fitToWidth="true">
+         <content>
+            <GridPane fx:id="productGrid" alignment="TOP_LEFT" hgap="20.0" vgap="20.0" style="-fx-padding: 30px;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" prefWidth="200.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+      
+      <!-- Floating Cart Button -->
+      <Button fx:id="cartButton" onAction="#toggleCart" alignment="BOTTOM_RIGHT" style="-fx-background-color: #FF5722; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold; -fx-background-radius: 50px; -fx-pref-width: 70px; -fx-pref-height: 70px;" text="🛒">
+         <StackPane.alignment>BOTTOM_RIGHT</StackPane.alignment>
+         <tooltip>
+            <Tooltip text="View Cart" />
+         </tooltip>
+      </Button>
+   </StackPane>
+   
+   <!-- Cart Panel (Hidden by default, positioned as overlay) -->
+   <VBox fx:id="cartPanel" alignment="TOP_CENTER" prefWidth="400.0" spacing="15.0" style="-fx-background-color: #f9f9f9; -fx-padding: 20px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);" visible="false" AnchorPane.topAnchor="70.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+      <children>
+         <!-- Cart Header with Close Button -->
+         <HBox alignment="CENTER_LEFT">
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Shopping Cart" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="closeCartButton" onAction="#toggleCart" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-background-radius: 15px; -fx-pref-width: 30px; -fx-pref-height: 30px;" text="×" />
+         </HBox>
+         
+         <!-- Cart Items -->
+         <ScrollPane fx:id="cartScrollPane" fitToWidth="true" style="-fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 5px;" prefHeight="400.0">
+            <content>
+               <VBox fx:id="cartItemsContainer" spacing="10.0" style="-fx-padding: 10px;">
+                  <!-- Cart items will be added here dynamically -->
+               </VBox>
+            </content>
+         </ScrollPane>
+         
+         <!-- Cart Summary -->
+         <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15px; -fx-border-color: #e0e0e0; -fx-border-radius: 5px;">
+            <children>
+               <!-- Subtotal -->
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Label style="-fx-font-size: 14px;" text="Subtotal:" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="subtotalLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="₱0.00" />
+               </HBox>
+               
+               <!-- Tax -->
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Label style="-fx-font-size: 14px;" text="Tax (12%):" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="taxLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="₱0.00" />
+               </HBox>
+               
+               <!-- Divider -->
+               <Separator />
+               
+               <!-- Total -->
+               <HBox alignment="CENTER_LEFT" spacing="10.0">
+                  <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Total:" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="totalLabel" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" text="₱0.00" />
+               </HBox>
+            </children>
+         </VBox>
+         
+         <!-- Checkout Button -->
+         <Button fx:id="checkoutButton" onAction="#handleCheckout" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 5px; -fx-padding: 12px;" text="Checkout" />
+         
+         <!-- Clear Cart Button -->
+         <Button fx:id="clearCartButton" onAction="#handleClearCart" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 5px; -fx-padding: 10px;" text="Clear Cart" />
+               </children>
+      </VBox>
+</AnchorPane>

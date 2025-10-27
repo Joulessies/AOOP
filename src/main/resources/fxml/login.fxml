@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cofitearia.milktea.controllers.LoginController" fx:id="rootStackPane">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+   <center>
+             <VBox alignment="CENTER" spacing="20.0" styleClass="main-container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+         <children>
+            <Label alignment="CENTER" text="Cofitearia Milktea" textFill="#2196F3">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            
+            <Label alignment="CENTER" text="Inventory &amp; Sales Management System" textFill="#666666">
+               <font>
+                  <Font name="System" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </Label>
+            
+                         <VBox alignment="CENTER" spacing="15.0" styleClass="login-form" maxWidth="500.0" minWidth="300.0">
+               <padding>
+                  <Insets bottom="30.0" left="40.0" right="40.0" top="30.0" />
+               </padding>
+               <children>
+                  <Label text="Username:" textFill="#333333">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameField" promptText="Enter your username" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0">
+                     <tooltip>
+                        <Tooltip text="Enter your username to login" />
+                     </tooltip>
+                  </TextField>
+                  
+                  <Label text="Password:" textFill="#333333">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" promptText="Enter your password" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0">
+                     <tooltip>
+                        <Tooltip text="Enter your password to login" />
+                     </tooltip>
+                  </PasswordField>
+                  
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <CheckBox fx:id="rememberMeCheckBox" mnemonicParsing="false" text="Remember me" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Hyperlink fx:id="forgotPasswordLink" text="Forgot Password?" textFill="#2196F3" />
+                     </children>
+                  </HBox>
+                  
+                  <Label fx:id="statusLabel" textFill="#F44336" visible="false">
+                     <font>
+                        <Font name="System" size="12.0" />
+                     </font>
+                  </Label>
+                  
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;" text="Login">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Click to login to the system" />
+                     </tooltip>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  
+                  <Button fx:id="guestAccessButton" mnemonicParsing="false" onAction="#handleGuestAccess" HBox.hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="200.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Guest Access (Demo)">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <tooltip>
+                        <Tooltip text="Access dashboard without login (demo mode)" />
+                     </tooltip>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            
+            <Hyperlink fx:id="registerLink" mnemonicParsing="false" onAction="#navigateToRegister" text="Don't have an account? Register here" textFill="#2196F3">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Click to create a new account" />
+               </tooltip>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Hyperlink>
+            
+            <Button fx:id="accessibilityButton" mnemonicParsing="false" onAction="#showAccessibilitySettings" style="-fx-background-color: transparent; -fx-border-color: #2196F3; -fx-text-fill: #2196F3;" text="Accessibility Settings">
+               <font>
+                  <Font name="System" size="12.0" />
+               </font>
+               <tooltip>
+                  <Tooltip text="Configure accessibility options for PWD users" />
+               </tooltip>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+         </padding>
+      </VBox>
+   </center>
+      </BorderPane>
+   </children>
+ </StackPane>
