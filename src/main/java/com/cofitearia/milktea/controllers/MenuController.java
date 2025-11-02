@@ -346,7 +346,7 @@ public class MenuController implements Initializable {
     List<Product> products = new ArrayList<>();
     
     Product p1 = new Product("Bubble Tea", "Delicious boba milk tea", new BigDecimal("120.00"), category);
-    p1.setId(1); // ← Add unique ID
+    p1.setId(1); // new unique ID
     products.add(p1);
     
     Product p2 = new Product("Thai Iced Tea", "Authentic Thai tea", new BigDecimal("150.00"), category);
