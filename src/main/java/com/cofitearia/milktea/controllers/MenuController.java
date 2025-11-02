@@ -1,7 +1,17 @@
 package com.cofitearia.milktea.controllers;
 
+import java.math.BigDecimal;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.logging.Logger;
+
 import com.cofitearia.milktea.models.Product;
 import com.cofitearia.milktea.services.ProductService;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -14,16 +24,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-
-import java.math.BigDecimal;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.logging.Logger;
 
 public class MenuController implements Initializable {
     private static final Logger logger = Logger.getLogger(MenuController.class.getName());
@@ -200,7 +200,13 @@ public class MenuController implements Initializable {
         Button addToCartBtn = new Button("Add to Cart");
         addToCartBtn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8px; -fx-padding: 8px 20px;");
         addToCartBtn.setPrefWidth(170);
-        addToCartBtn.setOnAction(e -> addToCart(product));
+
+
+        addToCartBtn.setUserData(product);//  Butt Data
+        addToCartBtn.setOnAction(e -> {
+        Product p = (Product) ((Button) e.getSource()).getUserData();
+    addToCart(p);
+});
         
         addToCartBtn.setOnMouseEntered(e -> addToCartBtn.setStyle("-fx-background-color: #45a049; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8px; -fx-padding: 8px 20px;"));
         addToCartBtn.setOnMouseExited(e -> addToCartBtn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px; -fx-background-radius: 8px; -fx-padding: 8px 20px;"));
@@ -337,23 +343,28 @@ public class MenuController implements Initializable {
     }
     
     private List<Product> getSampleProducts(String category) {
-        java.util.List<Product> products = new java.util.ArrayList<>();
-        
-        Product p1 = new Product("Bubble Tea", "Delicious boba milk tea", new java.math.BigDecimal("120.00"), category);
-        products.add(p1);
-        
-        Product p2 = new Product("Thai Iced Tea", "Authentic Thai tea", new java.math.BigDecimal("150.00"), category);
-        products.add(p2);
-        
-        Product p3 = new Product("Brown Sugar Milk Tea", "Classic brown sugar flavor", new java.math.BigDecimal("140.00"), category);
-        products.add(p3);
-        
-        Product p4 = new Product("Matcha Latte", "Premium matcha green tea", new java.math.BigDecimal("160.00"), category);
-        products.add(p4);
-        
-        Product p5 = new Product("Taro Milktea", "Creamy taro flavor", new java.math.BigDecimal("130.00"), category);
-        products.add(p5);
-        
-        return products;
-    }
+    List<Product> products = new ArrayList<>();
+    
+    Product p1 = new Product("Bubble Tea", "Delicious boba milk tea", new BigDecimal("120.00"), category);
+    p1.setId(1); // ← Add unique ID
+    products.add(p1);
+    
+    Product p2 = new Product("Thai Iced Tea", "Authentic Thai tea", new BigDecimal("150.00"), category);
+    p2.setId(2);
+    products.add(p2);
+    
+    Product p3 = new Product("Brown Sugar Milk Tea", "Classic brown sugar flavor", new BigDecimal("140.00"), category);
+    p3.setId(3);
+    products.add(p3);
+    
+    Product p4 = new Product("Matcha Latte", "Premium matcha green tea", new BigDecimal("160.00"), category);
+    p4.setId(4);
+    products.add(p4);
+    
+    Product p5 = new Product("Taro Milktea", "Creamy taro flavor", new BigDecimal("130.00"), category);
+    p5.setId(5);
+    products.add(p5);
+    
+    return products;
+}
 }
